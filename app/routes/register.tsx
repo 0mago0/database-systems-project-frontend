@@ -89,19 +89,19 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-canvas text-ink flex flex-col">
       <Header cartCount={0} onCartOpen={() => {}} currentPage="home" />
 
-      <div className="flex-1 bg-white">
+      <div className="flex-1 bg-surface">
         <div className="mx-auto max-w-md px-10 py-12">
           <div className="space-y-2 mb-8">
-            <h1 className="text-3xl font-bold text-slate-900">建立帳戶</h1>
-            <p className="text-slate-600">加入 NFan Store 開始購物</p>
+            <h1 className="text-3xl font-bold text-ink">建立帳戶</h1>
+            <p className="text-muted">加入 NFan Store 開始購物</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="username" className="text-sm font-semibold text-slate-900">
+              <label htmlFor="username" className="text-sm font-semibold text-ink">
                 用戶名稱
               </label>
               <input
@@ -110,19 +110,19 @@ export default function Register() {
                 type="text"
                 value={formData.username}
                 onChange={handleChange}
-                className={`w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all ${
-                  errors.username ? "border-red-500" : "border-slate-300"
+                className={`w-full mt-2 px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] transition-all ${
+                  errors.username ? "border-[var(--color-rose)]" : "border-soft"
                 }`}
                 placeholder="輸入用戶名稱"
                 disabled={isLoading}
               />
               {errors.username && (
-                <p className="text-red-500 text-xs mt-1">{errors.username}</p>
+                <p className="text-[var(--color-rose)] text-xs mt-1">{errors.username}</p>
               )}
             </div>
 
             <div>
-              <label htmlFor="email" className="text-sm font-semibold text-slate-900">
+              <label htmlFor="email" className="text-sm font-semibold text-ink">
                 電子郵件
               </label>
               <input
@@ -131,19 +131,19 @@ export default function Register() {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all ${
-                  errors.email ? "border-red-500" : "border-slate-300"
+                className={`w-full mt-2 px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] transition-all ${
+                  errors.email ? "border-[var(--color-rose)]" : "border-soft"
                 }`}
                 placeholder="輸入郵件地址"
                 disabled={isLoading}
               />
               {errors.email && (
-                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                <p className="text-[var(--color-rose)] text-xs mt-1">{errors.email}</p>
               )}
             </div>
 
             <div>
-              <label htmlFor="password" className="text-sm font-semibold text-slate-900">
+              <label htmlFor="password" className="text-sm font-semibold text-ink">
                 密碼
               </label>
               <input
@@ -152,19 +152,19 @@ export default function Register() {
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all ${
-                  errors.password ? "border-red-500" : "border-slate-300"
+                className={`w-full mt-2 px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] transition-all ${
+                  errors.password ? "border-[var(--color-rose)]" : "border-soft"
                 }`}
                 placeholder="輸入密碼"
                 disabled={isLoading}
               />
               {errors.password && (
-                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+                <p className="text-[var(--color-rose)] text-xs mt-1">{errors.password}</p>
               )}
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="text-sm font-semibold text-slate-900">
+              <label htmlFor="confirmPassword" className="text-sm font-semibold text-ink">
                 確認密碼
               </label>
               <input
@@ -173,29 +173,29 @@ export default function Register() {
                 type="password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={`w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all ${
-                  errors.confirmPassword ? "border-red-500" : "border-slate-300"
+                className={`w-full mt-2 px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] transition-all ${
+                  errors.confirmPassword ? "border-[var(--color-rose)]" : "border-soft"
                 }`}
                 placeholder="確認密碼"
                 disabled={isLoading}
               />
               {errors.confirmPassword && (
-                <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>
+                <p className="text-[var(--color-rose)] text-xs mt-1">{errors.confirmPassword}</p>
               )}
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2 disabled:opacity-50"
+              className="w-full bg-[var(--color-primary)] text-white py-2 rounded-lg font-semibold hover:opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] focus:ring-offset-2 disabled:opacity-50"
             >
               {isLoading ? "註冊中..." : "註冊"}
             </button>
           </form>
 
-          <p className="text-center text-sm text-slate-600 mt-6">
+          <p className="text-center text-sm text-muted mt-6">
             已有帳戶？{" "}
-            <Link to="/login" className="text-indigo-600 hover:text-indigo-700 font-semibold">
+            <Link to="/login" className="text-[var(--color-rose)] hover:text-ink font-semibold">
               立即登入
             </Link>
           </p>

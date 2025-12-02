@@ -122,7 +122,7 @@ export function Carousel({ items, autoPlay = true, interval = 5000 }: CarouselPr
       {/* 輪播容器 */}
       <div
         ref={carouselRef}
-        className="relative h-72 bg-slate-300 cursor-grab active:cursor-grabbing select-none"
+        className="relative h-72 bg-surface cursor-grab active:cursor-grabbing select-none"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -163,7 +163,7 @@ export function Carousel({ items, autoPlay = true, interval = 5000 }: CarouselPr
         <button
           onClick={goToPrevious}
           onTouchStart={(e) => e.stopPropagation()}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/40 hover:bg-white/60 text-[var(--color-primary)] rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] focus:ring-offset-2"
           aria-label="上一張"
         >
           ❮
@@ -173,7 +173,7 @@ export function Carousel({ items, autoPlay = true, interval = 5000 }: CarouselPr
         <button
           onClick={goToNext}
           onTouchStart={(e) => e.stopPropagation()}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/40 hover:bg-white/60 text-[var(--color-primary)] rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] focus:ring-offset-2"
           aria-label="下一張"
         >
           ❯
@@ -181,15 +181,15 @@ export function Carousel({ items, autoPlay = true, interval = 5000 }: CarouselPr
       </div>
 
       {/* 指示器 */}
-      <div className="flex justify-center gap-2 py-4 bg-white">
+      <div className="flex justify-center gap-2 py-4 bg-surface">
         {items.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500 ${
+            className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] ${
               index === currentIndex
-                ? "bg-rose-500 w-8"
-                : "bg-slate-300 w-2 hover:bg-slate-400"
+                ? "bg-[var(--color-rose)] w-8"
+                : "bg-[var(--color-border)] w-2 hover:bg-[var(--color-muted)]"
             }`}
             aria-label={`轉到第 ${index + 1} 張`}
             aria-current={index === currentIndex ? "true" : "false"}
@@ -198,7 +198,7 @@ export function Carousel({ items, autoPlay = true, interval = 5000 }: CarouselPr
       </div>
 
       {/* 計數器 */}
-      <div className="text-center text-sm text-slate-600 py-2 bg-white">
+      <div className="text-center text-sm text-muted py-2 bg-surface">
         {currentIndex + 1} / {items.length}
       </div>
     </div>

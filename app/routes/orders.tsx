@@ -11,10 +11,10 @@ interface Order {
 }
 
 const statusLabels: Record<Order["status"], { label: string; color: string }> = {
-  pending: { label: "待處理", color: "bg-yellow-100 text-yellow-800" },
-  shipped: { label: "已出貨", color: "bg-blue-100 text-blue-800" },
-  delivered: { label: "已送達", color: "bg-green-100 text-green-800" },
-  cancelled: { label: "已取消", color: "bg-red-100 text-red-800" },
+  pending: { label: "待處理", color: "bg-[var(--color-sand)] text-ink" },
+  shipped: { label: "已出貨", color: "bg-[var(--color-sage)] text-white" },
+  delivered: { label: "已送達", color: "bg-[var(--color-sky)] text-ink" },
+  cancelled: { label: "已取消", color: "bg-[var(--color-rose)] text-white" },
 };
 
 /**
@@ -72,14 +72,14 @@ export default function Orders() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-        <div className="text-slate-600">加載中...</div>
+      <div className="min-h-screen bg-canvas flex items-center justify-center">
+        <div className="text-muted">加載中...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-canvas text-ink flex flex-col">
       <CartPanel
         items={cartItems}
         total={cartTotal}
@@ -96,21 +96,21 @@ export default function Orders() {
       />
 
       <div className="flex-1">
-        <div className="bg-white px-20 py-12 text-center border-b border-slate-200">
+        <div className="bg-surface px-20 py-12 text-center border-b border-soft">
           <div className="mx-auto max-w-5xl">
-            <h1 className="text-3xl font-bold text-slate-900">我的訂單</h1>
-            <p className="text-slate-600 text-sm mt-2">查看和管理你的訂單</p>
+            <h1 className="text-3xl font-bold text-ink">我的訂單</h1>
+            <p className="text-muted text-sm mt-2">查看和管理你的訂單</p>
           </div>
         </div>
 
-        <div className="bg-slate-100 px-20 py-8 flex-1">
+        <div className="bg-canvas px-20 py-8 flex-1">
           <div className="mx-auto max-w-5xl">
             {orders.length === 0 ? (
-              <div className="bg-white rounded-lg shadow p-12 text-center space-y-4">
-                <p className="text-slate-600">尚無訂單</p>
+              <div className="bg-surface rounded-lg shadow p-12 text-center space-y-4">
+                <p className="text-muted">尚無訂單</p>
                 <Link
                   to="/shop"
-                  className="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
+                  className="inline-block bg-[var(--color-primary)] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)] focus:ring-offset-2"
                 >
                   繼續購物
                 </Link>
@@ -120,14 +120,14 @@ export default function Orders() {
                 {orders.map((order) => (
                   <div
                     key={order.id}
-                    className="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg"
+                    className="bg-surface rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg"
                   >
-                    <div className="border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+                    <div className="border-b border-soft px-6 py-4 flex items-center justify-between">
                       <div className="space-y-1">
-                        <p className="text-sm font-semibold text-slate-900">
+                        <p className="text-sm font-semibold text-ink">
                           訂單號：{order.id}
                         </p>
-                        <p className="text-xs text-slate-600">{order.date}</p>
+                        <p className="text-xs text-muted">{order.date}</p>
                       </div>
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -146,34 +146,34 @@ export default function Orders() {
                             className="flex justify-between items-center text-sm"
                           >
                             <div className="flex-1">
-                              <p className="font-semibold text-slate-900">
+                              <p className="font-semibold text-ink">
                                 {item.name}
                               </p>
-                              <p className="text-xs text-slate-600">
+                              <p className="text-xs text-muted">
                                 數量：{item.quantity}
                               </p>
                             </div>
-                            <p className="font-semibold text-slate-900">
+                            <p className="font-semibold text-ink">
                               {item.price}
                             </p>
                           </div>
                         ))}
                       </div>
 
-                      <div className="border-t border-slate-200 pt-3 flex justify-between items-center text-sm">
-                        <span className="font-semibold text-slate-900">合計：</span>
-                        <span className="text-lg font-bold text-indigo-600">
+                      <div className="border-t border-soft pt-3 flex justify-between items-center text-sm">
+                        <span className="font-semibold text-ink">合計：</span>
+                        <span className="text-lg font-bold text-[var(--color-rose)]">
                           ${order.total.toFixed(2)}
                         </span>
                       </div>
                     </div>
 
-                    <div className="border-t border-slate-200 px-6 py-3 bg-slate-50 flex gap-2">
-                      <button className="flex-1 px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg text-sm font-semibold hover:bg-indigo-50 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <div className="border-t border-soft px-6 py-3 bg-[var(--color-canvas)] flex gap-2">
+                      <button className="flex-1 px-4 py-2 border border-[var(--color-rose)] text-[var(--color-rose)] rounded-lg text-sm font-semibold hover:bg-[var(--color-surface)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)]">
                         查看詳情
                       </button>
                       {order.status !== "cancelled" && (
-                        <button className="flex-1 px-4 py-2 border border-slate-300 text-slate-900 rounded-lg text-sm font-semibold hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-600">
+                        <button className="flex-1 px-4 py-2 border border-soft text-ink rounded-lg text-sm font-semibold hover:bg-[var(--color-surface)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-rose)]">
                           追蹤物流
                         </button>
                       )}
