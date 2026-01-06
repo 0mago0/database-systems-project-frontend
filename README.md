@@ -32,6 +32,37 @@ Demo Video: https://youtu.be/ETT7GuwoKHw
 ### 前置需求
 - Node.js (建議 v16 或以上)
 - PostgreSQL 資料庫
+- Docker 與 Docker Compose (如使用容器化部署)
+
+### 快速啟動 - Docker Compose (推薦)
+
+使用 Docker Compose 可以一次性啟動整個應用 (包含資料庫、後端、前端)：
+
+```bash
+# 啟動所有服務
+docker-compose up -d
+
+# 查看服務運行狀態
+docker-compose ps
+
+# 停止服務
+docker-compose down
+
+# 檢視日誌
+docker-compose logs -f
+```
+
+**服務啟動後，您可以訪問：**
+- **前端**: http://localhost:4173
+- **後端 API**: http://localhost:3002
+- **資料庫**: localhost:5432 (PostgreSQL)
+
+**預設資料庫認證：**
+```
+用戶名: postgres
+密碼: postgres
+資料庫名: animate_dp
+```
 
 ### 1. 資料庫設定
 請確保您已安裝 PostgreSQL 並建立資料庫。
